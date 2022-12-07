@@ -28,6 +28,7 @@ import (
 
 	pb "github.com/abtris/build.buf-example/proto/helloworld/v1"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 var (
@@ -53,6 +54,9 @@ func main() {
 	}
 	s := grpc.NewServer()
 	pb.RegisterGreeterServiceServer(s, &server{})
+	// Register reflection service on gRPC server.
+	// Register reflection service on gRPC server.
+	reflection.Register(s)
 	log.Printf("server listening at %v", lis.Addr())
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
