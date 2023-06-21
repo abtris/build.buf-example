@@ -3,7 +3,7 @@ module github.com/abtris/build.buf-example
 go 1.19
 
 require (
-	google.golang.org/grpc v1.56.0
+	google.golang.org/grpc v1.56.1
 	google.golang.org/protobuf v1.30.0
 )
 
