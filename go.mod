@@ -2,7 +2,7 @@ module github.com/abtris/build.buf-example
 
 go 1.22.0
 
-toolchain go1.24.1
+toolchain go1.26.0
 
 require (
 	google.golang.org/grpc v1.71.0
