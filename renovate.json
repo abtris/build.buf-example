@@ -2,5 +2,35 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>abtris/renovate-config"
+  ],
+  "platformAutomerge": false,
+  "ignoreTests": false,
+  "pinDigests": true,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "groupName": null,
+    "minimumReleaseAge": "0 days"
+  },
+  "packageRules": [
+    {
+      "description": "Keep indirect Go dependencies eligible for updates",
+      "matchManagers": ["gomod"],
+      "matchDepTypes": ["indirect"],
+      "enabled": true
+    },
+    {
+      "description": "Test compatible Go dependency updates as one batch",
+      "matchManagers": ["gomod"],
+      "matchDepTypes": ["require", "indirect"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Go dependencies",
+      "automerge": true
+    },
+    {
+      "description": "Automerge Go compiler updates after checks pass",
+      "matchDatasources": ["golang-version"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
   ]
 }
